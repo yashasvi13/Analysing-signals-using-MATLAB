@@ -1,0 +1,70 @@
+%SSC PROJECT
+%TOPIC : C - SIGNAL MATCHING
+%CREATED BY:KANISHKA KHUNTETA,DIVYANSHI SONI,DEVANG SINGH GREWAL,YASHASVI JAIN
+%ROLL NO'S: 15UEC029,15UEC023,15UEC020,15UEC077
+%CREATED ON : 15 MARCH,2017
+
+
+
+
+sound_wave_1=audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\one.wav');
+sound_wave_2= audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\two.wav');
+sound_wave_3 = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\three.wav');
+sound_wave_4 = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\four.wav');
+sound_wave_5 = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\five.wav');
+sound_test = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\test.wav');
+sound_test_1 = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_C\test2.wav');
+
+
+
+
+
+length_sound=[ max(size(sound_test)) max(size(sound_test_1)) max(size(sound_wave_1)) max(size(sound_wave_2)) max(size(sound_wave_3)) max(size(sound_wave_4)) max(size(sound_wave_5))];
+
+minlength=min(length_sound);
+
+sound_wave_11=sound_wave_1(1:minlength,:);
+sound_wave_22=sound_wave_2(1:minlength,:);
+sound_wave_33=sound_wave_3(1:minlength,:);
+sound_wave_44=sound_wave_4(1:minlength,:);
+sound_wave_55=sound_wave_5(1:minlength,:);
+
+testing1=sound_test(1:minlength,:);
+testing2=sound_test_1(1:minlength,:);
+
+evaluation_1=corrcoef(sound_wave_11,testing1);
+evaluation_2=corrcoef(sound_wave_22,testing1);
+evaluation_3=corrcoef(sound_wave_33,testing1);
+evaluation_4=corrcoef(sound_wave_44,testing1);
+evaluation_5=corrcoef(sound_wave_55,testing1);
+
+evaluation_11=corrcoef(sound_wave_11,testing2);
+evaluation_22=corrcoef(sound_wave_22,testing2);
+evaluation_33=corrcoef(sound_wave_33,testing2);
+evaluation_44=corrcoef(sound_wave_44,testing2);
+evaluation_55=corrcoef(sound_wave_55,testing2);
+
+expexted=[1 1;1 1];
+if evaluation_1 ==expexted
+    display('first wave is matching signal with Test');
+elseif evaluation_2 ==expexted
+    display('second wave is matching signal with Test');
+elseif evaluation_3 ==expexted
+    display('third wave is matching signal with Test');
+elseif evaluation_4 ==expexted
+    display('Fourth wave is matching signal with Test');
+elseif evaluation_5 ==expexted
+    display('Fifth wave is matching signal with Test');    
+end
+
+if evaluation_11 ==expexted
+    display('First wave is matching signal with Test2');
+elseif evaluation_22 ==expexted
+    display('Second wave is matching signal with Test2');
+elseif evaluation_33 ==expexted
+    display('Third wave is matching signal with Test2');
+elseif evaluation_44 ==expexted
+    display('Fourth is matching signal with Test2');
+elseif evaluation_55 ==expexted
+    display('Fifth is matching signal with Test2');    
+end

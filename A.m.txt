@@ -1,0 +1,85 @@
+%SSC PROJECT
+%TOPIC : A
+%CREATED BY:KANISHKA KHUNTETA,DIVYANSHI SONI,DEVANG SINGH GREWAL,YASHASVI JAIN
+%ROLL NO'S: 15UEC029,15UEC023,15UEC020,15UEC077
+%CREATED ON : 15 MARCH,2017
+
+
+
+clc;
+clear all;
+close all;
+
+[drums,fs] = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_A\drums.wav');
+d1 = drums(fs*10 : fs*20); 
+d10 = drums(fs*10 : fs*20);
+
+[guitar,fs1] = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_A\guitar.wav');
+g = guitar(fs1*10 : fs1*20);
+
+[bass,fs2] = audioread('C:\Users\My pc\Desktop\ssc project\project_ssc\exp_A\bass.wav');
+b = bass(fs2*10 : fs2*20);
+
+t4 = d1 + g + b;
+
+t5 = d1 + g + 10*b;
+
+figure(1);
+plot(d10)
+ramp = 0 : 1/(fs*2) : 1;
+n = length(ramp);
+ramp = transpose(ramp);
+d10(1:n) = d10(1:n).*ramp;
+hold on 
+plot(d10, 'r');
+t7 = d10 + g + b;
+
+
+TL = d1 +b;
+TR = g;
+t8 = [TL, TR];
+
+t9 = [t4*.80 , t4*0.56]; 
+display('playing drums');
+sound(d1,fs);
+  pause; 
+  
+  clear playsnd;
+      display('playing guitar');
+
+ sound(g,fs1);
+     pause; 
+  
+  clear playsnd;
+  display('playing bass');
+        sound(b,fs2);
+        pause; 
+  
+  clear playsnd;
+    display('playing all the three');
+         sound(t4,fs);
+         pause; 
+  
+  clear playsnd;
+  display('playing increased bass');
+       sound(t5,fs);
+       pause; 
+  
+  clear playsnd;
+  display('playing gradually increasing amplitude of drum');
+        sound(t7,fs);
+        pause; 
+  
+  clear playsnd;
+  display('playing drums');
+         sound(t8,fs);
+         pause; 
+  
+ clear playsnd;
+  display('playing mix');
+        sound(t9,fs); 
+       
+pause; 
+  
+
+  clear playsnd;
